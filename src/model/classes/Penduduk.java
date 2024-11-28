@@ -1,7 +1,6 @@
 package model.classes;
 
 import java.io.File;
-import java.util.Date;
 
 public class Penduduk {
     private String nik;

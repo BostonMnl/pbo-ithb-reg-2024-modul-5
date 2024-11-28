@@ -15,10 +15,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.text.SimpleDateFormat;
 
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import controller.FormControllers;
 import model.classes.Penduduk;
 
@@ -83,19 +79,8 @@ public class FormKTP extends JFrame {
         inputPanel.add(tglLahir);
 
         // Date picker untuk tanggal lahir
-        UtilDateModel model = new UtilDateModel();
-        Properties prop = new Properties();
-        prop.put("text.today", "Today");
-        prop.put("text.month", "Month");
-        prop.put("text.year", "Year");
-
         JDateChooser tglLahirDatePicker = new JDateChooser();
-
-        JDatePanelImpl datePanel = new JDatePanelImpl(model, prop);
-        // JDatePickerImpl tglLahirDatePicker = new JDatePickerImpl(datePanel, new DateFormatter(new SimpleDateFormat("dd-MM-yyyy")));
-        tglLahirDatePicker.setBounds(150, 150, 400, 25);     
-        inputPanel.add(tglLahirDatePicker);   
-
+        
         JLabel jenisKelamin = new JLabel("Jenis Kelamin");
         jenisKelamin.setBounds(50, 175, 400, 25);
         JRadioButton jkPria = new JRadioButton("Pria");
@@ -393,14 +378,14 @@ public class FormKTP extends JFrame {
                         .toLocalDate();
                 String tglPembuatanFormatted = tglPembuatanLocalDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-                // if (nikKTP.isEmpty() ||namaOutput.isEmpty() ||  tempatLahirOutput.isEmpty() || tglLahirOutput == null || tanggalLahirlocalDateFormatted == null ||
-                    //     jenisKelaminOutput.isEmpty()|| golDarahOutput.isEmpty() || agamaOutput.isEmpty() || statusKawinOutput.isEmpty() || pekerjaanOutput.isEmpty() ||
-                    //     alamatOutput.isEmpty() || rtRWOutput.isEmpty() || kelDesaOutput.isEmpty() || kecamatanOutput.isEmpty() ||
-                    //     kewarganegaraanOutput.isEmpty() || berlakuHinggaOutput.isEmpty() || kotaPembuatanOutput.isEmpty() ||
-                    //     tglPembuatanFormatted == null || photoFile == null || ttdFile == null) {
-                    // JOptionPane.showMessageDialog(null, "Semua field harus diisi!", "Error", JOptionPane.ERROR_MESSAGE);
+                if (nikKTP.isEmpty() ||namaOutput.isEmpty() ||  tempatLahirOutput.isEmpty() || tglLahirOutput == null || tanggalLahirlocalDateFormatted == null ||
+                        jenisKelaminOutput.isEmpty()|| golDarahOutput.isEmpty() || agamaOutput.isEmpty() || statusKawinOutput.isEmpty() || pekerjaanOutput.isEmpty() ||
+                        alamatOutput.isEmpty() || rtRWOutput.isEmpty() || kelDesaOutput.isEmpty() || kecamatanOutput.isEmpty() ||
+                        kewarganegaraanOutput.isEmpty() || berlakuHinggaOutput.isEmpty() || kotaPembuatanOutput.isEmpty() ||
+                        tglPembuatanFormatted == null || photoFile == null || ttdFile == null) {
+                    JOptionPane.showMessageDialog(null, "Semua field harus diisi!", "Error", JOptionPane.ERROR_MESSAGE);
 
-                // } else {
+                } else {
                     Penduduk KTP = new Penduduk(
                             nikKTP,
                             namaOutput,
@@ -425,7 +410,7 @@ public class FormKTP extends JFrame {
                     
                     new KTPView(KTP);
                     frame.dispose();
-                // }
+                }
             }
         });
 
