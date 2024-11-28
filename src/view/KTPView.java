@@ -1,23 +1,19 @@
 package view;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import java.awt.*;
+import javax.swing.*;
 import model.classes.Penduduk;
 
 public class KTPView {
     JFrame frame;
-    JPanel panel;
 
     public KTPView(Penduduk ktp) {
         viewKTP(ktp);
     }
 
     private void viewKTP(Penduduk ktp) {
+        frame = new JFrame("KTP INPUT FORM");
+        frame.setLayout(new GridLayout(1, 2));
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
 
@@ -30,25 +26,62 @@ public class KTPView {
         int frameX = (screenWidth / 2) - (frameWidth / 2);
         int frameY = (screenHeight / 2) - (frameHeight / 2);
 
-        frame = new JFrame("KTP INPUT FORM");
         frame.setBounds(frameX, frameY, frameWidth, frameHeight);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Panel for Images
+        JPanel gambarPanel = new JPanel();
+        gambarPanel.setLayout(new FlowLayout());
+
+        // Scaled Photo
+        ImageIcon ktpImage = new ImageIcon(ktp.getFoto().getAbsolutePath());
+        ImageIcon resizedKtpImage = new ImageIcon(ktpImage.getImage().getScaledInstance(150, 200, Image.SCALE_SMOOTH));
+        JLabel imageLabel = new JLabel("Photo", resizedKtpImage, JLabel.CENTER);
+
+        // Scaled Signature
+        ImageIcon tandImageIcon = new ImageIcon(ktp.getTandaTangan().getAbsolutePath());
+        ImageIcon resizedTandImage = new ImageIcon(tandImageIcon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH));
+        JLabel imageLabel2 = new JLabel("Signature", resizedTandImage, JLabel.CENTER);
+
+        gambarPanel.add(imageLabel);
+        gambarPanel.add(imageLabel2);
+
+        // Panel for Text Information
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(null);
-        inputPanel.setBounds(0, 0, frameWidth, frameHeight);
 
         StringBuilder hasil = new StringBuilder();
+        hasil.append("<html>");
+        hasil.append("<h1>Provinsi DKI JAKARTA</h1>");
+        hasil.append("<h1>JAKARTA UTARA</h1>");
+        hasil.append("NIK : " + ktp.getNik() + "<br>");
+        hasil.append("Nama : " + ktp.getNama() + "<br>");
+        hasil.append("Tempat Lahir : " + ktp.getTempatLahir() + "<br>");
+        hasil.append("Tanggal Lahir : " + ktp.getTanggalLahir() + "<br>");
+        hasil.append("Jenis Kelamin : " + ktp.getJenisKelamin() + "<br>");
+        hasil.append("Golongan Darah : " + ktp.getGolDarah() + "<br>");
+        hasil.append("Alamat : " + ktp.getAlamat() + "<br>");
+        hasil.append("Rt/RW : " + ktp.getRtRW() + "<br>");
+        hasil.append("Kel/Desa : " + ktp.getKelDesa() + "<br>");
+        hasil.append("Kecamatan : " + ktp.getRtRW() + "<br>");
+        hasil.append("Agama : " + ktp.getAgama() + "<br>");
+        hasil.append("Status Perkawinan : " + ktp.getStatusPerkawinan() + "<br>");
+        hasil.append("Pekerjaan : " + ktp.getPekerjaan() + "<br>");
+        hasil.append("Kewarganegaraan : " + ktp.getKewarganegaraan() + "<br>");
+        hasil.append("Berlaku Hingga : " + ktp.getBerlakuHingga() + "<br>");
+        hasil.append("Kota Pembuatan : " + ktp.getKotaPembuatanKTP() + "<br>");
+        hasil.append("Tanggal Pembuatan : " + ktp.getTanggalPembuatanKTP() + "<br>");
+        hasil.append("</html>");
 
-        hasil.append("NIK : " + ktp.getNik() + "\nNama: " + ktp.getNama() + "\nTempat Lahir : " + ktp.getTempatLahir() + "\nTanggal Lahir: " + ktp.getTanggalLahir() + "\nJenis kelamin"+ ktp.getJenisKelamin() + "\nGologan darah"+ktp.getGolDarah());
+        JLabel result = new JLabel(hasil.toString());
+        result.setBounds(20, 20, 660, 200); 
 
-         JLabel result = new JLabel(hasil.toString());
+        inputPanel.add(result);
 
-         inputPanel.add(result);
-         frame.add(inputPanel);
+        // Adding Panels to Frame
+        frame.add(inputPanel, BorderLayout.CENTER);
+        frame.add(gambarPanel, BorderLayout.NORTH);
 
+        frame.setVisible(true);
     }
-
-
-
 }

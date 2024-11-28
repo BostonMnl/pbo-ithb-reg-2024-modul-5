@@ -393,14 +393,14 @@ public class FormKTP extends JFrame {
                         .toLocalDate();
                 String tglPembuatanFormatted = tglPembuatanLocalDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-                if (nikKTP.isEmpty() ||namaOutput.isEmpty() ||  tempatLahirOutput.isEmpty() || tglLahirOutput == null || tanggalLahirlocalDateFormatted == null ||
-                        jenisKelaminOutput.isEmpty()|| golDarahOutput.isEmpty() || agamaOutput.isEmpty() || statusKawinOutput.isEmpty() || pekerjaanOutput.isEmpty() ||
-                        alamatOutput.isEmpty() || rtRWOutput.isEmpty() || kelDesaOutput.isEmpty() || kecamatanOutput.isEmpty() ||
-                        kewarganegaraanOutput.isEmpty() || berlakuHinggaOutput.isEmpty() || kotaPembuatanOutput.isEmpty() ||
-                        tglPembuatanFormatted == null || photoFile == null || ttdFile == null) {
-                    JOptionPane.showMessageDialog(null, "Semua field harus diisi!", "Error", JOptionPane.ERROR_MESSAGE);
+                // if (nikKTP.isEmpty() ||namaOutput.isEmpty() ||  tempatLahirOutput.isEmpty() || tglLahirOutput == null || tanggalLahirlocalDateFormatted == null ||
+                    //     jenisKelaminOutput.isEmpty()|| golDarahOutput.isEmpty() || agamaOutput.isEmpty() || statusKawinOutput.isEmpty() || pekerjaanOutput.isEmpty() ||
+                    //     alamatOutput.isEmpty() || rtRWOutput.isEmpty() || kelDesaOutput.isEmpty() || kecamatanOutput.isEmpty() ||
+                    //     kewarganegaraanOutput.isEmpty() || berlakuHinggaOutput.isEmpty() || kotaPembuatanOutput.isEmpty() ||
+                    //     tglPembuatanFormatted == null || photoFile == null || ttdFile == null) {
+                    // JOptionPane.showMessageDialog(null, "Semua field harus diisi!", "Error", JOptionPane.ERROR_MESSAGE);
 
-                } else {
+                // } else {
                     Penduduk KTP = new Penduduk(
                             nikKTP,
                             namaOutput,
@@ -423,10 +423,9 @@ public class FormKTP extends JFrame {
                             tglPembuatanFormatted
                     );
                     
-                    System.out.println("Berhasil");
                     new KTPView(KTP);
                     frame.dispose();
-                }
+                // }
             }
         });
 
