@@ -1,3 +1,5 @@
+package model.classes;
+
 import java.io.File;
 import java.util.Date;
 
@@ -5,18 +7,16 @@ public class Penduduk {
     private String nik;
     private String nama;
     private String tempatLahir;
-    private Date tanggalLagir;
-    private JenisKelamin jenisKelamin;
-    private GolDarah golDarah;
+    private String tanggalLahir;
+    private String jenisKelamin;
+    private String golDarah;
     private String alamat;
-    private String rt;
-    private String rw;
-    private String kel;
-    private String Desa;
+    private String rtRW;
+    private String kelDesa;
     private String kecamatan;
-    private Agama agama;
-    private StatusPerkawinan statusPerkawinan;
-    private String Pekerjaan;
+    private String agama;
+    private String statusPerkawinan;
+    private String pekerjaan;
     private String kewarganegaraan;
     private File foto;
     private File tandaTangan;
@@ -27,25 +27,23 @@ public class Penduduk {
     public Penduduk() {
     }
 
-    public Penduduk(String nik, String nama, String tempatLahir, Date tanggalLagir, JenisKelamin jenisKelamin,
-            GolDarah golDarah, String alamat, String rt, String rw, String kel, String desa, String kecamatan,
-            Agama agama, StatusPerkawinan statusPerkawinan, String pekerjaan, String kewarganegaraan, File foto,
-            File tandaTangan, String berlakuHingga, String kotaPembuatanKTP, String tanggalPembuatanKTP) {
+    public Penduduk(String nik, String nama, String tempatLahir, String tanggalLahir, String jenisKelamin,
+            String golDarah, String alamat, String rtRW, String kelDesa, String kecamatan, String agama,
+            String statusPerkawinan, String pekerjaan, String kewarganegaraan, File foto, File tandaTangan,
+            String berlakuHingga, String kotaPembuatanKTP, String tanggalPembuatanKTP) {
         this.nik = nik;
         this.nama = nama;
         this.tempatLahir = tempatLahir;
-        this.tanggalLagir = tanggalLagir;
+        this.tanggalLahir = tanggalLahir;
         this.jenisKelamin = jenisKelamin;
         this.golDarah = golDarah;
         this.alamat = alamat;
-        this.rt = rt;
-        this.rw = rw;
-        this.kel = kel;
-        this.Desa = desa;
+        this.rtRW = rtRW;
+        this.kelDesa = kelDesa;
         this.kecamatan = kecamatan;
         this.agama = agama;
         this.statusPerkawinan = statusPerkawinan;
-        this.Pekerjaan = pekerjaan;
+        this.pekerjaan = pekerjaan;
         this.kewarganegaraan = kewarganegaraan;
         this.foto = foto;
         this.tandaTangan = tandaTangan;
@@ -78,27 +76,27 @@ public class Penduduk {
         this.tempatLahir = tempatLahir;
     }
 
-    public Date getTanggalLagir() {
-        return tanggalLagir;
+    public String getTanggalLahir() {
+        return tanggalLahir;
     }
 
-    public void setTanggalLagir(Date tanggalLagir) {
-        this.tanggalLagir = tanggalLagir;
+    public void setTanggalLahir(String tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
     }
 
-    public JenisKelamin getJenisKelamin() {
+    public String getJenisKelamin() {
         return jenisKelamin;
     }
 
-    public void setJenisKelamin(JenisKelamin jenisKelamin) {
+    public void setJenisKelamin(String jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
     }
 
-    public GolDarah getGolDarah() {
+    public String getGolDarah() {
         return golDarah;
     }
 
-    public void setGolDarah(GolDarah golDarah) {
+    public void setGolDarah(String golDarah) {
         this.golDarah = golDarah;
     }
 
@@ -110,36 +108,20 @@ public class Penduduk {
         this.alamat = alamat;
     }
 
-    public String getRt() {
-        return rt;
+    public String getRtRW() {
+        return rtRW;
     }
 
-    public void setRt(String rt) {
-        this.rt = rt;
+    public void setRtRW(String rtRW) {
+        this.rtRW = rtRW;
     }
 
-    public String getRw() {
-        return rw;
+    public String getKelDesa() {
+        return kelDesa;
     }
 
-    public void setRw(String rw) {
-        this.rw = rw;
-    }
-
-    public String getKel() {
-        return kel;
-    }
-
-    public void setKel(String kel) {
-        this.kel = kel;
-    }
-
-    public String getDesa() {
-        return Desa;
-    }
-
-    public void setDesa(String desa) {
-        Desa = desa;
+    public void setKelDesa(String kelDesa) {
+        this.kelDesa = kelDesa;
     }
 
     public String getKecamatan() {
@@ -150,28 +132,28 @@ public class Penduduk {
         this.kecamatan = kecamatan;
     }
 
-    public Agama getAgama() {
+    public String getAgama() {
         return agama;
     }
 
-    public void setAgama(Agama agama) {
+    public void setAgama(String agama) {
         this.agama = agama;
     }
 
-    public StatusPerkawinan getStatusPerkawinan() {
+    public String getStatusPerkawinan() {
         return statusPerkawinan;
     }
 
-    public void setStatusPerkawinan(StatusPerkawinan statusPerkawinan) {
+    public void setStatusPerkawinan(String statusPerkawinan) {
         this.statusPerkawinan = statusPerkawinan;
     }
 
     public String getPekerjaan() {
-        return Pekerjaan;
+        return pekerjaan;
     }
 
     public void setPekerjaan(String pekerjaan) {
-        Pekerjaan = pekerjaan;
+        pekerjaan = pekerjaan;
     }
 
     public String getKewarganegaraan() {
@@ -221,4 +203,6 @@ public class Penduduk {
     public void setTanggalPembuatanKTP(String tanggalPembuatanKTP) {
         this.tanggalPembuatanKTP = tanggalPembuatanKTP;
     }
+
+        
 }
