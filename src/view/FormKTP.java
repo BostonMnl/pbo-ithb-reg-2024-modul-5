@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import javax.swing.text.DateFormatter;  
 import java.util.*;
@@ -87,8 +89,10 @@ public class FormKTP extends JFrame {
         prop.put("text.month", "Month");
         prop.put("text.year", "Year");
 
+        JDateChooser tglLahirDatePicker = new JDateChooser();
+
         JDatePanelImpl datePanel = new JDatePanelImpl(model, prop);
-        JDatePickerImpl tglLahirDatePicker = new JDatePickerImpl(datePanel, new DateFormatter(new SimpleDateFormat("dd-MM-yyyy")));
+        // JDatePickerImpl tglLahirDatePicker = new JDatePickerImpl(datePanel, new DateFormatter(new SimpleDateFormat("dd-MM-yyyy")));
         tglLahirDatePicker.setBounds(150, 150, 400, 25);     
         inputPanel.add(tglLahirDatePicker);   
 
@@ -324,7 +328,8 @@ public class FormKTP extends JFrame {
         JLabel tglPembuatan = new JLabel("Tanggal Pembuatan");
         tglPembuatan.setBounds(50, 525, 400, 25);
 
-        JDatePickerImpl tglPembuatanField = new JDatePickerImpl(datePanel, new DateFormatter(new SimpleDateFormat("dd-MM-yy")));
+        JDateChooser tglPembuatanField = new JDateChooser();
+        // JDatePickerImpl tglPembuatanField = new JDatePickerImpl(datePanel, new DateFormatter(new SimpleDateFormat("dd-MM-yy")));
         tglPembuatanField.setBounds(175, 525, 400, 25);
         
         inputPanel.add(tglPembuatan);
@@ -340,7 +345,7 @@ public class FormKTP extends JFrame {
                 String namaOutput = namaField.getText();
                 String nikKTP = NIKField.getText();
                 String tempatLahirOutput = tempatLahirField.getText();
-                Date tglLahirOutput = (Date) tglLahirDatePicker.getModel().getValue();
+                Date tglLahirOutput = (Date) tglLahirDatePicker.getDate();
                 LocalDate tanggalLahirlocalDate = tglLahirOutput.toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate();
@@ -382,7 +387,7 @@ public class FormKTP extends JFrame {
 
                 String kotaPembuatanOutput = kotaPembuatanField.getText();
 
-                Date tglPembuatanKTP = (Date) tglPembuatanField.getModel().getValue();
+                Date tglPembuatanKTP = tglPembuatanField.getDate();
                 LocalDate tglPembuatanLocalDate = tglPembuatanKTP.toInstant()
                         .atZone(ZoneId.systemDefault())
                         .toLocalDate();
